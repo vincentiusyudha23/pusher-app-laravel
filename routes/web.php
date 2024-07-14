@@ -25,4 +25,4 @@ Route::get('/dashboard', function(){
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/trigger_test', [NotificationController::class, 'index']);
+// Route::get('/trigger_test', [NotificationController::class, 'index']);
