@@ -87,7 +87,17 @@
                     <form method="POST" action="{{ route('login') }}"">
                         @csrf
                         <x-input-text key="username" type="text" title="Username" />
+                        @error('username')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                         <x-input-text key="password" type="password" title="Password" />
+                        @error('password')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                         <button type="submit" class="btn bg-success w-100 fw-bold text-light fs-5 mt-2">
                             Login
                         </button>
