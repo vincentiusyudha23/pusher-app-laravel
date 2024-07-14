@@ -13,12 +13,15 @@ use App\Http\Controllers\NotificationController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+require __DIR__.'/auth.php';
 
-Route::get('/', function () {
-    return view('firstpage');
-})->name('first');
+// Route::get('/', function () {
+//     return view('firstpage');
+// })->middleware('guest')->name('first');
 
-Auth::routes();
+Route::get('/dashboard', function(){
+    return view('admin.dashboard.index');
+})->middleware('auth')->name('admin.dashboard');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

@@ -12,16 +12,46 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
     @stack('styles')
+    <style>
+        #app .sidebar{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 17%;
+            height: 100vh;
+            border-right: 1px solid rgba(var(--bs-success-rgb), 0.5);
+        }
+        .bg-main{
+            position: relative;
+            width: 100%;
+            padding: 20px;
+            background: rgba(var(--bs-success-rgb), 0.5);
+        }
+        .sidebar-item{
+            width: 100%;
+            padding: 10px 20px;
+            border-radius: 10px;
+            color: rgba(var(--bs-success-rgb));
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .sidebar-item:hover{
+            background: rgba(var(--bs-secondary-rgb), 0.5);
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
-        @if (!Request()->routeIs('first'))
-            <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        @if (Auth::check())
+            {{-- <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
                 <div class="container">
                     <a class="navbar-brand" href="{{ url('/') }}">
                         {{ config('app.name', 'Laravel') }}
@@ -73,12 +103,18 @@
                         </ul>
                     </div>
                 </div>
-            </nav>
+            </nav> --}}
+            @include('layouts.partials.sidebar')
         @endif
-
-        <main class="p-0 m-0">
-            @yield('content')
-        </main>
+        <div class="d-flex">
+            <div style="width: 17%;"></div>
+            <div style="width: 83%;">
+                @include('layouts.partials.navbar')
+                <main class="bg-main">
+                    @yield('content')
+                </main>
+            </div>
+        </div>
     </div>
     @stack('script')
 </body>
