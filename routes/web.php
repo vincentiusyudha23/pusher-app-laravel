@@ -26,3 +26,16 @@ Route::get('/dashboard', function(){
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Route::get('/trigger_test', [NotificationController::class, 'index']);
+
+Route::get('/send_to_mail', function(){
+    $data = [
+            'ipAddress' => Request()->ip(),
+            'userAgent' => Request()->userAgent()
+        ];
+    \Mail::send('emails.basic',$data, function($mail){
+        $mail->from(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
+        $mail->to('vincentius.yudha23@gmail.com');
+    });
+
+    echo 'Terimakasih!';
+})->name('email');
