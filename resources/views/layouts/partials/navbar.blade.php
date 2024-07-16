@@ -1,4 +1,4 @@
-<div class="w-100 d-flex align-items-center px-5" style="height: 70px; border-bottom: 1px solid rgba(var(--bs-success-rgb), 0.5)">
+<div class="w-100 h-100 d-flex align-items-center px-5" style="border-bottom: 1px solid rgba(var(--bs-success-rgb), 0.5)">
     <h4 class="fw-bold text-success">
         @yield('title')
     </h4>

@@ -29,8 +29,9 @@
         .bg-main{
             position: relative;
             width: 100%;
+            height: 90vh;
             padding: 20px;
-            background: rgba(var(--bs-success-rgb), 0.5);
+            background: linear-gradient(to bottom, rgba(var(--bs-success-rgb), 0.7) 50%, white 50%);
         }
         .sidebar-item{
             width: 100%;
@@ -108,8 +109,10 @@
         @endif
         <div class="d-flex">
             <div style="width: 17%;"></div>
-            <div style="width: 83%;">
-                @include('layouts.partials.navbar')
+            <div style="width: 83%; height: 100vh;">
+                <div class="w-100" style="height: 10vh;">
+                    @include('layouts.partials.navbar')
+                </div>
                 <main class="bg-main">
                     @yield('content')
                 </main>
